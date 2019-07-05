@@ -130,8 +130,8 @@ for time=1:times
                 saveas(gcf,strcat(figuresdir_ConfusionMatrix,filename))
             end
             TP=C(1,1);FN=C(2,1);FP=C(1,2);TN=C(2,2);
-            TPR=TP/(TP+FN);%sensitivity敏感度
-            FPR=FP/(FP+TN);%1-specificity特異度
+            TPR=TP/(TP+FN);
+            FPR=FP/(FP+TN);
             finalcsv{14,1}='sensitivity';
             finalcsv{15,1}='1-specificity';
             finalcsv(14,time+1)=num2cell(TPR);

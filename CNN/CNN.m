@@ -1,7 +1,7 @@
 clc;clear;
-path='C:\xampp\htdocs\transfer\imgae';
-figuresdir_AUC='C:\xampp\htdocs\transfer\AUC\';
-figuresdir_ConfusionMatrix='C:\xampp\htdocs\transfer\ConfusionMatrix\';
+path='';
+figuresdir_AUC='';
+figuresdir_ConfusionMatrix='';
 filename = 'option_num.csv';
 Num = readmatrix(filename);
 MiniBatchSize=Num(1,1);Epochs=Num(1,2);
@@ -76,7 +76,7 @@ for time=1:times
                 Compare=strcmp(test_Name,Validation_Name);
                 if Compare==0
                     image=imread(file_erro);
-                    imwrite(image,['C:\xampp\htdocs\transfer\erro\',num2str(time),'_',char(Validation_Name),'_',name,ext]);
+                    imwrite(image,['C:\...',num2str(time),'_',char(Validation_Name),'_',name,ext]);
                 end
             end
             %-----confusion matrix-----%
@@ -85,8 +85,8 @@ for time=1:times
             filename=['ConfusionMatrix_',num2str(time),'.png'];
             saveas(gcf,strcat(figuresdir_ConfusionMatrix,filename))
             TP=C(1,1);FN=C(2,1);FP=C(1,2);TN=C(2,2);
-            TPR=TP/(TP+FN);%sensitivity±Ó·P«×
-            FPR=FP/(FP+TN);%1-specificity¯S²§«×
+            TPR=TP/(TP+FN);%sensitivityÂ±Ã“Â·PÂ«Ã—
+            FPR=FP/(FP+TN);%1-specificityÂ¯SÂ²Â§Â«Ã—
             finalcsv{14,1}='sensitivity';
             finalcsv{15,1}='1-specificity';
             finalcsv(14,time+1)=num2cell(TPR);
@@ -117,7 +117,7 @@ for time=1:times
 end
 finalcsv{16,1}='ACC';
 %creat csv
-fid = fopen('C:\xampp\htdocs\transfer\ACC\net.csv','w');
+fid = fopen('C:\...\net.csv','w');
 for i=1:4
     fprintf(fid,'%s,%s\n',finalcsv{i,1},finalcsv{i,2});
 end
